@@ -15,22 +15,21 @@ public class AppStore {
         Scanner in = new Scanner(System.in);
         int number = in.nextInt();
 
-        if(number == 1){
-            System.out.println("Username: ");
-            //Função para verificar se tal username existe
-            System.out.println("Palavra passe: ");
-            //Ver se o password coincide
-        }
-        else if(number == 2){
-            System.out.println("Insira um username: ");
-            //Função para guardar username
-            System.out.println("Insira uma palavra passe");
-            //Função para guardar password
-        }
-        else{
-            System.out.println("ERRO");
-        }
+        switch(number){
+            case 1:
+                System.out.println("Username: ");
+                System.out.println("Password: ");
+                break;
+            case 2:
+                System.out.println("Insira um username: ");
+                System.out.println("Insira uma password: ");
+                break;
 
+            default:
+                System.out.println("ERRO");
+                break;
+        }
+        System.out.println("\n");
         System.out.println("------------------");
-    }
+   }
 }
