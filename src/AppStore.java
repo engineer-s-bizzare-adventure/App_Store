@@ -4,6 +4,13 @@ public class AppStore {
     public static void main(String[] args) {
         userInterface();
     }
+    /*
+
+        Users user1 = new Users("João",123456);
+        (adicionar a classe onde os Users ficam registados quando tiver feito)
+        (adicionar o corpo quando estiver feito).addUsers(user1);
+        System.out.println((classe onde fica guardada).toString());
+    */
 
     private static void userInterface(){
         System.out.println("------------------");
