@@ -1,13 +1,13 @@
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class Programmers extends Users {
 
-    public Programmers(String name, int age, int ID){
-        super(name, age, ID);
-    }
+    public Programmers(String username, int age, String password,double money){
+        super(username, age, password,money);
 
-    public Programmers(String username, String password){
-        super(username, password);
+        //MISSING LOOP TO CHECK THE EXISTING ID'S WITH EXISTING USERS
     }
 
     public void getMenu(){
@@ -52,4 +52,5 @@ public class Programmers extends Users {
         System.out.println("\n");
         System.out.println("------------------");
     }
+
 }
