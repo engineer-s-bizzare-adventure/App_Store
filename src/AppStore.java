@@ -4,12 +4,13 @@ public class AppStore {
 
     public static void main(String[] args) {
         //Temporary
-        Users[] AppStoreUsers = {new Programmers("Fred","12345"),
-                                 new Programmers("Ricardo", "milos"),
-                                 new Client("Bob", "1234")};
+        Users[] AppStoreUsers = {new Programmers("Fred",18,"f1234"),
+                                 new Programmers("Ricardo",21, "milos"),
+                                 new Client("Bob", 1234, "suckadick",20)};
 
         userInterface(AppStoreUsers);
     }
+
 
     private static void userInterface(Users[]AppStoreUsers){
         System.out.println("------------------");
@@ -35,13 +36,19 @@ public class AppStore {
                 //Going through user array
                 for(int i = 0; i < AppStoreUsers.length; i++){
                     //If username and password are the same..
-                    if(AppStoreUsers[i].getUsername().equals(username) &&
-                        AppStoreUsers[i].getPassword().equals(password)){
-                        AppStoreUsers[i].getMenu();
+                    try{
+                        if(AppStoreUsers[i].getUsername().equals(username) &&
+                                AppStoreUsers[i].getPassword().equals(password)){
+                            AppStoreUsers[i].getMenu();
 
-                        //End the loop since we have found the user
-                        break;
+                            //End the loop since we have found the user
+                            break;
+                        }
                     }
+                    catch (NullPointerException ripUserLogin){
+                        System.out.println("Error on login: " +ripUserLogin.getMessage());
+                    }
+
                 }
                 break;
             case 2:

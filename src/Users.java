@@ -1,19 +1,27 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+import java.util.ArrayList;
+
 public abstract class Users {
     private String name;
     private int age;
     private int ID;
+    private int max,min;
     private String username;
     private String password;
+
+    private ArrayList<Users> userReg;
 
     public Users(){
 
     }
 
     //Constructor that gathers user information
-    public Users(String name, int age, int ID){
+    public Users(String name, int age, String password){
         this.name = name;
         this.age = age;
-        this.ID = ID;
+        this.ID = createRandomID();
     }
 
     //Constructor that takes username and password
@@ -22,7 +30,20 @@ public abstract class Users {
         this.password = password;
     }
 
-    //Gets & Sets
+
+    public int createRandomID(){
+        max = 99999;
+        min = 10000;
+        Random randomNumber = new Random();
+        int randomID = randomNumber.nextInt((max - min) + 1) + min;
+
+        //MISSING LOOP TO CHECK FOR EXISTING ID'S ON EXISTING USERS
+        //LIST WITH REGISTERED USERS IS NEEDED FOR THIS
+
+        return randomID;
+    }
+
+    //Gets & Sets ---------------------------------------------------------------------
 
     public String getUsername(){
         return username;
@@ -64,13 +85,21 @@ public abstract class Users {
         this.ID = ID;
     }
 
+    public ArrayList<Users> getUserReg(){
+        return userReg;
+    }
+
+    //Abstract functions
+
     public abstract void getMenu();
 
-//    public String toString(){
-//        String output="";
-//        output = "Nome: " + name + "\n";
-//        output += "Idade: " + age + "\n";
-//        output += "ID: " + ID + "\n";
-//        return output;
-//    }
+    //Register
+
+    public void addNewProgrammer(Programmers obj){
+        userReg.add(obj);
+    }
+
+    public void addNewClient(Client obj){
+        userReg.add(obj);
+    }
 }
