@@ -1,23 +1,23 @@
-public abstract class Users {
-    private String name;
+import java.util.ArrayList;
+
+public abstract class User {
+    private String name, username, password;
     private int age;
     private int ID;
-    private String username;
-    private String password;
 
-    public Users(){
+    public User(){
 
     }
 
     //Constructor that gathers user information
-    public Users(String name, int age, int ID){
+    public User(String name, int age, int ID){
         this.name = name;
         this.age = age;
         this.ID = ID;
     }
 
     //Constructor that takes username and password
-    public Users(String username, String password){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
     }

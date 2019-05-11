@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class Programmers extends Users {
+public class Programmer extends User {
 
-    public Programmers(String name, int age, int ID){
+    public Programmer(String name, int age, int ID){
         super(name, age, ID);
     }
 
-    public Programmers(String username, String password){
+    public Programmer(String username, String password){
         super(username, password);
     }
 

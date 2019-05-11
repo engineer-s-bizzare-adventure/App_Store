@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Client extends Users {
+public class Client extends User {
     private double money;
 
     public Client(String name, int age, int ID, double money){

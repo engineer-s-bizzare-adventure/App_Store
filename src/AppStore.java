@@ -1,14 +1,14 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AppStore {
+    //Static porque este pertence à classe, e não ao objeto
+    static ArrayList<User> users = new ArrayList<User>();
 
     public static void main(String[] args) {
-        //Temporary
-        Users[] AppStoreUsers = {new Programmers("Fred","12345"),
-                                 new Programmers("Ricardo", "milos"),
-                                 new Client("Bob", "1234")};
-
-        userInterface(AppStoreUsers);
+        while(true){
+            userInterface();
+        }
     }
     /*
 
@@ -18,7 +18,7 @@ public class AppStore {
         System.out.println((classe onde fica guardada).toString());
     */
 
-    private static void userInterface(Users[]AppStoreUsers){
+    private static void userInterface(){
         System.out.println("------------------");
         System.out.println("|  AppStore ALP  |");
         System.out.println("------------------");
@@ -32,19 +32,26 @@ public class AppStore {
         //Scanner for login
         Scanner login = new Scanner(System.in);
 
+        //Scanner for register
+        Scanner register = new Scanner(System.in);
+
+        String username;
+        String password;
+
         switch(number){
             case 1:
                 System.out.println("Username: ");
-                String username = login.nextLine();
+                username = login.nextLine();
                 System.out.println("Password: ");
-                String password = login.nextLine();
+                password = login.nextLine();
 
                 //Going through user array
-                for(int i = 0; i < AppStoreUsers.length; i++){
+                for(int i = 0; i < users.size(); i++){
+                    User currentUser = users.get(i);
                     //If username and password are the same..
-                    if(AppStoreUsers[i].getUsername().equals(username) &&
-                        AppStoreUsers[i].getPassword().equals(password)){
-                        AppStoreUsers[i].getMenu();
+                    if(currentUser.getUsername().equals(username) &&
+                        currentUser.getPassword().equals(password)){
+                        currentUser.getMenu();
 
                         //End the loop since we have found the user
                         break;
@@ -53,9 +60,17 @@ public class AppStore {
                 break;
             case 2:
                 System.out.println("Insira um username: ");
-                System.out.println("Insira uma password: ");
-                break;
+                username = register.nextLine();
 
+
+                System.out.println("Insira uma password: ");
+                password = register.nextLine();
+
+                Client clientReg = new Client(username, password);
+
+                users.add(clientReg);
+
+                break;
             default:
                 System.out.println("ERRO");
                 break;
