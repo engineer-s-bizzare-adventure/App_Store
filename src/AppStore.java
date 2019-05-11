@@ -5,8 +5,8 @@ public class AppStore {
 
     public static void main(String[] args) {
         //Temporary
-        Users[] AppStoreUsers = {new Programmers("Fred",18,"f1234"),
-                                 new Programmers("Ricardo",21, "milos"),
+        Users[] AppStoreUsers = {new Programmers("Fred",18,"f1234",20),
+                                 new Programmers("Ricardo",21, "milos",20),
                                  new Client("Bob", 1234, "suckadick",20)};
 
         userInterface(AppStoreUsers);

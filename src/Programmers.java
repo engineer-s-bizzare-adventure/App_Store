@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Programmers extends Users {
 
-    public Programmers(String username, int age, String password){
-        super(username, age, password);
+    public Programmers(String username, int age, String password,double money){
+        super(username, age, password,money);
 
         //MISSING LOOP TO CHECK THE EXISTING ID'S WITH EXISTING USERS
     }
