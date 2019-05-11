@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
-public class Client extends Users {
+public class Client extends User {
+    private double money;
 
-
-    public Client(String username, int age , String password, double money){
-        super(username, age,password,money);
+    public Client(String name, int age, int ID, double money){
+        super(name, age, ID);
+        this.money = money;
     }
 
+    public Client(String username, String password){
+        super(username, password);
+    }
 
     public double addMoney(){
             System.out.println("Insira o valor que deseja adicionar à sua conta: ");
