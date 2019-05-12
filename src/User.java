@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class User {
     private String name, username, password;
     private int age;
     private int ID;
-
+    private int max,min;
     public User(){
 
     }
@@ -13,7 +14,7 @@ public abstract class User {
     public User(String name, int age, int ID){
         this.name = name;
         this.age = age;
-        this.ID = ID;
+        this.ID = createRandomID();
     }
 
     //Constructor that takes username and password
@@ -22,6 +23,17 @@ public abstract class User {
         this.password = password;
     }
 
+    public int createRandomID(){
+        max = 99999;
+        min = 10000;
+        Random randomNumber = new Random();
+        int randomID = randomNumber.nextInt((max - min) + 1) + min;
+
+        //MISSING LOOP TO CHECK FOR EXISTING ID'S ON EXISTING USERS
+        //LIST WITH REGISTERED USERS IS NEEDED FOR THIS
+
+        return randomID;
+    }
     //Gets & Sets
 
     public String getUsername(){
