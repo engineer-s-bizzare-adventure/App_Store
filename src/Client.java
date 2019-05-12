@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
 public class Client extends User {
-    private double money;
 
-    public Client(String name, int age, int ID, double money){
-        super(name, age, ID);
-        this.money = money;
+    public Client(String name, int age, int money){
+        super(name, age, money);
+
     }
 
     public Client(String username, String password){
@@ -71,6 +70,8 @@ public class Client extends User {
         System.out.println("\n");
         System.out.println("------------------");
     }
+
+
 
 }
 

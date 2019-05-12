@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
 
 public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
-    static ArrayList<User> users = new ArrayList<User>();
+    static ArrayList<User> users = new ArrayList<>();
+    static String SaveList[] = new String[] {};
+    static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
 
-    public static void main(String[] args) {
-        while(true){
-            userInterface();
-        }
+    public static void main(String[] args) throws IOException {
+
+        userInterface();
+
     }
     /*
 
@@ -18,64 +21,151 @@ public class AppStore {
         System.out.println((classe onde fica guardada).toString());
     */
 
-    private static void userInterface(){
+    private static void userInterface() throws IOException {
         System.out.println("------------------");
         System.out.println("|  AppStore ALP  |");
         System.out.println("------------------");
-        System.out.println("Para fazer login, clique 1");
-        System.out.println("Não tem conta? Registe-se! Clique 2");
+        System.out.println("Já tem conta? Faça login!");
+        System.out.println("Não tem conta? Registe-se!");
 
-        //Scanner to use options
-        Scanner in = new Scanner(System.in);
-        int number = in.nextInt();
 
         //Scanner for login
         Scanner login = new Scanner(System.in);
-
-        //Scanner for register
         Scanner register = new Scanner(System.in);
-
+        //Boolean for menu loop
+        boolean menu = true;
         String username;
         String password;
 
-        switch(number){
-            case 1:
-                System.out.println("Username: ");
-                username = login.nextLine();
-                System.out.println("Password: ");
-                password = login.nextLine();
+        while(menu) {
 
-                //Going through user array
-                for(int i = 0; i < users.size(); i++){
-                    User currentUser = users.get(i);
-                    //If username and password are the same..
-                    if(currentUser.getUsername().equals(username) &&
-                        currentUser.getPassword().equals(password)){
-                        currentUser.getMenu();
+            //Scanner to use options
+            Scanner in = new Scanner(System.in);
+            int number = 0;
 
-                        //End the loop since we have found the user
-                        break;
+            System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Exit: 5");
+
+            //Scan input
+            if(in.hasNextInt()) {
+                number = in.nextInt();
+            }
+
+
+            switch(number) {
+                case 1:
+                    System.out.println("Username: ");
+                    username = login.nextLine();
+                    System.out.println("Password: ");
+                    password = login.nextLine();
+
+                    //Going through user array
+                    for (int i = 0; i < users.size(); i++) {
+                        try {
+                            User currentUser = users.get(i);
+                            //If username and password are the same..
+                            if (currentUser.getUsername().equals(username) && currentUser.getPassword().equals(password)) {
+                                System.out.println("Bemvindo");
+                                currentUser.getMenu();
+
+                                //End the loop since we have found the user
+                                break;
+                            }
+                        } catch (NullPointerException ripUserLogin) {
+                            System.out.println("Erro no login: " + ripUserLogin.getMessage());
+                        }
                     }
-                }
-                break;
-            case 2:
-                System.out.println("Insira um username: ");
-                username = register.nextLine();
+                    System.out.println("Username ou Password incorreta. \nTente de novo. \n");
+                    break;
 
+                case 2:
+                    System.out.println("Insira um username: ");
+                    username = register.nextLine();
 
-                System.out.println("Insira uma password: ");
-                password = register.nextLine();
+                    System.out.println("Insira uma password: ");
+                    password = register.nextLine();
 
-                Client clientReg = new Client(username, password);
+                    Client clientReg = new Client(username, password);
 
-                users.add(clientReg);
+                    users.add(clientReg);
+                    saveFile(filePath);
+                    break;
 
-                break;
-            default:
-                System.out.println("ERRO");
-                break;
+                case 3:
+                    System.out.println("Save:");
+                    saveFile(filePath);
+                    break;
+
+                case 4:
+                    System.out.println("Load:");
+                    loadFile(filePath);
+                    break;
+
+                case 5:
+                    System.out.println("Saindo..");
+                    menu=false;
+                    break;
+
+                default:
+                    System.out.println("Input not available \nTry again:");
+                    in.reset();
+                    break;
+            }
         }
         System.out.println("\n");
         System.out.println("------------------");
    }
+
+    public static void saveFile(String filePath) throws IOException {
+        FileWriter fw = new FileWriter(filePath);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        for (int i = 0; i < users.size() ; i++) {
+            pw.println(users.get(i).saveInfo());
+        }
+
+        pw.close();
+    }
+
+    public static void loadFile(String filePath) throws IOException{
+        boolean loaded = false;
+        int counter = 0;
+        ArrayList<String> Info = new ArrayList<>();
+        //In case the file doesn't exist
+        try {
+            FileReader fr = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fr);
+
+            String linha;
+
+            while((linha=br.readLine())!=null && !loaded) {
+                linha = br.readLine();
+                Info.add(linha);
+
+                if (linha == null){
+                    counter++;
+                    if (counter == 2){
+                        loaded = true;
+                    }
+                    //return loadInfo(Info);
+                }
+
+                else{
+                    counter = 0;
+                }
+
+            }
+
+
+            br.close();
+        }
+
+        catch (IOException e) {
+            System.out.println("Erro ao abrir ficheiro:" + e );
+        }
+
+
+    }
+
+
 }
