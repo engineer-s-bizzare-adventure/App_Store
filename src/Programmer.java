@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Programmer extends User {
 
-    public Programmer(String name, int age, int ID){
-        super(name, age, ID);
+    public Programmer(String name, int age, int money){
+        super(name, age,money);
     }
 
     public Programmer(String username, String password){

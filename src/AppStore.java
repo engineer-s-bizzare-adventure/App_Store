@@ -5,7 +5,8 @@ import java.io.*;
 public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
-    static final String filePath = "C:\\save.txt";
+    static String SaveList[] = new String[] {};
+    static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
 
@@ -27,9 +28,6 @@ public class AppStore {
         System.out.println("Já tem conta? Faça login!");
         System.out.println("Não tem conta? Registe-se!");
 
-        //Scanner to use options
-        Scanner in = new Scanner(System.in);
-        int number = 0;
 
         //Scanner for login
         Scanner login = new Scanner(System.in);
@@ -40,11 +38,15 @@ public class AppStore {
         String password;
 
         while(menu) {
+
+            //Scanner to use options
+            Scanner in = new Scanner(System.in);
+            int number = 0;
+
             System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Exit: 5");
 
             //Scan input
             if(in.hasNextInt()) {
-
                 number = in.nextInt();
             }
 
@@ -104,7 +106,8 @@ public class AppStore {
                     break;
 
                 default:
-                    System.out.println("Menu Error");
+                    System.out.println("Input not available \nTry again:");
+                    in.reset();
                     break;
             }
         }
@@ -118,36 +121,51 @@ public class AppStore {
         PrintWriter pw = new PrintWriter(bw);
 
         for (int i = 0; i < users.size() ; i++) {
-
-            pw.println(users.get(i).getID());
+            pw.println(users.get(i).saveInfo());
         }
 
         pw.close();
     }
 
     public static void loadFile(String filePath) throws IOException{
-
-        //Caso o ficheiro não existir
+        boolean loaded = false;
+        int counter = 0;
+        ArrayList<String> Info = new ArrayList<>();
+        //In case the file doesn't exist
         try {
-
             FileReader fr = new FileReader(filePath);
             BufferedReader br = new BufferedReader(fr);
 
-            String linha = br.readLine();
-            int num = Integer.parseInt(linha);
+            String linha;
 
-            while (linha != null) {
-
+            while((linha=br.readLine())!=null && !loaded) {
                 linha = br.readLine();
+                Info.add(linha);
+
+                if (linha == null){
+                    counter++;
+                    if (counter == 2){
+                        loaded = true;
+                    }
+                    //return loadInfo(Info);
+                }
+
+                else{
+                    counter = 0;
+                }
+
             }
+
 
             br.close();
         }
 
         catch (IOException e) {
-            System.out.println("A message de erro foi:" + e );
+            System.out.println("Erro ao abrir ficheiro:" + e );
         }
 
 
     }
+
+
 }

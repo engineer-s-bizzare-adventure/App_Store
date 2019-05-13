@@ -2,38 +2,49 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class User {
-    private String name, username, password;
-    private int age;
-    private int ID;
+    protected String name, username, password;
+    protected int age;
+    protected int ID;
+    protected double money;
     private int max,min;
+    protected int randomID;
+
     public User(){
 
     }
 
     //Constructor that gathers user information
-    public User(String name, int age, int ID){
+    public User(String name, int age, int money){
         this.name = name;
         this.age = age;
-        this.ID = createRandomID();
+        this.money=money;
     }
 
     //Constructor that takes username and password
     public User(String username, String password){
         this.username = username;
         this.password = password;
+        this.ID = createRandomID();
     }
 
     public int createRandomID(){
-        max = 99999;
-        min = 10000;
+        max = 999999;
+        min = 100000;
         Random randomNumber = new Random();
-        int randomID = randomNumber.nextInt((max - min) + 1) + min;
+        randomID = randomNumber.nextInt((max - min) + 1) + min;
 
-        //MISSING LOOP TO CHECK FOR EXISTING ID'S ON EXISTING USERS
-        //LIST WITH REGISTERED USERS IS NEEDED FOR THIS
+        for (int i = 0; i < AppStore.users.size() ; i++) {
+            if (randomID == AppStore.users.get(i).getID()){
+                randomID = randomNumber.nextInt((max - min) + 1) + min;
+                i=-1;
+                System.out.println("Generating new ID");
+            }
+        }
 
+        System.out.println("Unique ID for user created: " + randomID);
         return randomID;
     }
+
     //Gets & Sets
 
     public String getUsername(){
@@ -75,6 +86,13 @@ public abstract class User {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+    public String saveInfo(){
+        String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
+        return info;
+
+    }
+
 
     public abstract void getMenu();
 
