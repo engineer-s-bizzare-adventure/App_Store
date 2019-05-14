@@ -90,30 +90,34 @@ public class AppStore {
                     break;
 
                 case 2:
-                    Scanner type = new Scanner(System.in);
-                    System.out.println("Pressiona 1 para se registar como cliente ou 2 para programador\n");
-
-                    int userType = type.nextInt();
-
                     System.out.println("Insira um username: ");
                     username = register.nextLine();
 
                     System.out.println("Insira uma password: ");
                     password = register.nextLine();
 
+                    Scanner type = new Scanner(System.in);
+                    System.out.println("Pressiona 1 para se registar como cliente ou 2 para programador");
 
-                    if(userType == 1){
-                        addNewClient(username,password);
+                    int userType;
+
+                    if(type.hasNextInt()) {
+                        userType = type.nextInt();
+
+                        if(userType == 1){
+                            addNewClient(username,password);
+                        }
+                        if(userType == 2){
+                            addNewProgrammer(username, password);
+                        }
+                        else{
+                            System.out.println("Opção inválida");
+                        }
                     }
-                    if(userType == 2){
-                        addNewProgrammer(username, password);
-                    }
+
                     else {
-                        System.out.println("Opção inválida");
-                        break;
+                        System.out.println("Introduza um numero valido");
                     }
-
-                    saveFile(filePath);
                     break;
 
                 case 3:
