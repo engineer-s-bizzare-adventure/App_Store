@@ -8,6 +8,7 @@ public abstract class User {
     protected double money;
     private int max,min;
     protected int randomID;
+    public boolean logged = false;
 
     public User(){
 
@@ -91,6 +92,20 @@ public abstract class User {
         String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
         return info;
 
+    }
+
+    public boolean state(){
+        return logged;
+    }
+
+    public void pressAnyKey(){
+        System.out.println("Pressione uma tecla para continuar...");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
     }
 
 

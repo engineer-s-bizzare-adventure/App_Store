@@ -24,9 +24,12 @@ public class Client extends User {
     }
 
     public void getMenu(){
-        System.out.println("------------------");
-        System.out.println("|   Bem vindo!   |");
-        System.out.println("------------------");
+        if(!logged){
+            System.out.println("------------------");
+            System.out.println("|   Bem vindo!   |");
+            System.out.println("------------------");
+        }
+        System.out.println("User: " + this.username + " | ID: " + this.ID);
         System.out.println("Opções: ");
 
         System.out.println("1. Ver aplicações adquiridas");
@@ -34,10 +37,19 @@ public class Client extends User {
         System.out.println("3. Fazer um review");
         System.out.println("4. Remover um review");
         System.out.println("5. Ver fundos");
-        System.out.println("6. Sair");
+        System.out.println("6. Logout");
+        System.out.println("7. Sair");
+
+        //Logged in
+        logged = true;
 
         Scanner in = new Scanner(System.in);
-        int number = in.nextInt();
+        int number=0;
+
+        //Scan input
+        if(in.hasNextInt()) {
+            number = in.nextInt();
+        }
 
         switch(number){
             case 1:
@@ -54,12 +66,13 @@ public class Client extends User {
             case 4:
                 System.out.println("Not done yet 4");
                 break;
-
             case 5:
                 System.out.println(money);
                 break;
-
             case 6:
+                logged = false;
+                break;
+            case 7:
                 System.exit(0);
                 break;
 

@@ -7,11 +7,10 @@ public class AppStore {
     static ArrayList<User> users = new ArrayList<>();
     static String SaveList[] = new String[] {};
     static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
+    // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
-
         userInterface();
-
     }
     /*
 
@@ -32,10 +31,15 @@ public class AppStore {
         //Scanner for login
         Scanner login = new Scanner(System.in);
         Scanner register = new Scanner(System.in);
+
         //Boolean for menu loop
         boolean menu = true;
         String username;
         String password;
+
+        //Checks if successfully logged in
+        boolean loggedin_check = false;
+        boolean goodLogin = false;
 
         while(menu) {
 
@@ -64,9 +68,15 @@ public class AppStore {
                             User currentUser = users.get(i);
                             //If username and password are the same..
                             if (currentUser.getUsername().equals(username) && currentUser.getPassword().equals(password)) {
-                                System.out.println("Bemvindo");
-                                currentUser.getMenu();
-
+                                loggedin_check = true;
+                                goodLogin = true;
+                                while(loggedin_check){
+                                    currentUser.getMenu();
+                                    if(!currentUser.state()){
+                                        loggedin_check = false;
+                                        System.out.println("Logged out from: " + currentUser.getID());
+                                    }
+                                }
                                 //End the loop since we have found the user
                                 break;
                             }
@@ -74,19 +84,35 @@ public class AppStore {
                             System.out.println("Erro no login: " + ripUserLogin.getMessage());
                         }
                     }
-                    System.out.println("Username ou Password incorreta. \nTente de novo. \n");
+                    if(!goodLogin){
+                        System.out.println("Username ou Password incorreta. \nTente de novo. \n");
+                    }
                     break;
 
                 case 2:
+                    Scanner type = new Scanner(System.in);
+                    System.out.println("Pressiona 1 para se registar como cliente ou 2 para programador\n");
+
+                    int userType = type.nextInt();
+
                     System.out.println("Insira um username: ");
                     username = register.nextLine();
 
                     System.out.println("Insira uma password: ");
                     password = register.nextLine();
 
-                    Client clientReg = new Client(username, password);
 
-                    users.add(clientReg);
+                    if(userType == 1){
+                        addNewClient(username,password);
+                    }
+                    if(userType == 2){
+                        addNewProgrammer(username, password);
+                    }
+                    else {
+                        System.out.println("Opção inválida");
+                        break;
+                    }
+
                     saveFile(filePath);
                     break;
 
@@ -107,7 +133,7 @@ public class AppStore {
 
                 default:
                     System.out.println("Input not available \nTry again:");
-                    in.reset();
+                    in.next();
                     break;
             }
         }
@@ -115,12 +141,22 @@ public class AppStore {
         System.out.println("------------------");
    }
 
+    public static void addNewProgrammer(String username, String password){
+         Programmer type = new Programmer(username, password);
+        users.add(type);
+    }
+    public static void addNewClient(String username, String password){
+        Client type = new Client(username, password);
+        users.add(type);
+    }
+
+
     public static void saveFile(String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
 
-        for (int i = 0; i < users.size() ; i++) {
+        for (int i = 0; i < users.size(); i++) {
             pw.println(users.get(i).saveInfo());
         }
 
@@ -155,7 +191,6 @@ public class AppStore {
                 }
 
             }
-
 
             br.close();
         }
