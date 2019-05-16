@@ -52,7 +52,7 @@ public class Programmer extends User {
                 break;
 
             case 3:
-                System.out.println("Not done yet 3");
+                removeApp();
                 break;
 
             case 4:
@@ -100,6 +100,26 @@ public class Programmer extends User {
         App createApp = new App(appName, price, name);
 
         apps.add(createApp);
+    }
+
+    public void removeApp(){
+        Scanner input = new Scanner(System.in);
+
+        String appName;
+
+        System.out.println("Nome da aplicação que deseja remover: ");
+        appName = input.nextLine();
+
+        if(apps.size() == 0){
+            System.out.println("You have no apps yet! \nCreate one :) \n");
+        }
+        else
+            for(int i=0; i < apps.size(); i++){
+                App currentApp = apps.get(i);
+                    if(currentApp.getName().equals(appName)){
+                        apps.remove(i);
+                    }
+            }
     }
 
     public void printApps(ArrayList<App> apps){
