@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client extends User {
+    ArrayList<App> ownedApps;
 
     public Client(String name, int age, int money){
         super(name, age, money);
@@ -9,6 +11,7 @@ public class Client extends User {
 
     public Client(String username, String password){
         super(username, password);
+        ownedApps = new ArrayList<>();
     }
 
     public double addMoney(){

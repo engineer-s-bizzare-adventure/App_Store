@@ -6,8 +6,8 @@ public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
     static String SaveList[] = new String[] {};
-    static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
-    // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
+    // static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
+    static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();
