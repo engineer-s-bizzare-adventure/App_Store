@@ -6,6 +6,8 @@ public abstract class User {
     protected int age;
     protected int ID;
     protected double money;
+    protected String review;
+
     private int max,min;
     protected int randomID;
     public boolean logged = false;
@@ -88,11 +90,24 @@ public abstract class User {
         this.ID = ID;
     }
 
+    public String getReview() {return review;}
+
+    public void setReview(String review) {this.review= review;}
+
+
+
     public String saveInfo(){
         String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
         return info;
 
     }
+
+    public String reviewInfo(){
+        String review = getReview() + "\n";
+        return review;
+
+    }
+
 
     public boolean state(){
         return logged;

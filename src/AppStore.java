@@ -6,8 +6,14 @@ public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
     static String SaveList[] = new String[] {};
-    static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
+
+    //Array que guarda os comentarios
+    static ArrayList<String> reviews = new ArrayList<>();
+    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+
+    //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
     // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
+    static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();
@@ -41,6 +47,7 @@ public class AppStore {
         boolean loggedin_check = false;
         boolean goodLogin = false;
 
+        //ciclo para verificar o input do utilizador no menu
         while(menu) {
 
             //Scanner to use options
@@ -154,7 +161,7 @@ public class AppStore {
         users.add(type);
     }
 
-
+    //código para guardar o login dos users
     public static void saveFile(String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -162,6 +169,19 @@ public class AppStore {
 
         for (int i = 0; i < users.size(); i++) {
             pw.println(users.get(i).saveInfo());
+        }
+
+        pw.close();
+    }
+
+    //código para guardar o ficheiro dos comentarios
+    public static void saveReview(String reviewPath) throws IOException {
+        FileWriter fw = new FileWriter(reviewPath);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        for (int i = 0; i < reviews.size(); i++) {
+            pw.println(reviews.get(i).reviewInfo); //why is it wrong ?
         }
 
         pw.close();
