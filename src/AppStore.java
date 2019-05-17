@@ -171,6 +171,9 @@ public class AppStore {
             pw.println(users.get(i).saveInfo());
         }
 
+        pw.close();
+    }
+
     //código para guardar o ficheiro dos comentarios
     public static void saveReview(String reviewPath) throws IOException {
         FileWriter fw = new FileWriter(reviewPath);
