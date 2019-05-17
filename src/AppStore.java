@@ -170,9 +170,6 @@ public class AppStore {
         for (int i = 0; i < users.size(); i++) {
             pw.println(users.get(i).saveInfo());
         }
-        
-        pw.close();
-    }
 
     //código para guardar o ficheiro dos comentarios
     public static void saveReview(String reviewPath) throws IOException {
