@@ -25,4 +25,6 @@ public class App {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public String getProgrammerName(){return programmerName;}
 }

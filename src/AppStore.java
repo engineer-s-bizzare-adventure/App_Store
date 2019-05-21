@@ -5,26 +5,20 @@ import java.io.*;
 public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<App> totalApps = new ArrayList<>();
     static String SaveList[] = new String[] {};
 
     //Array que guarda os comentarios
     static ArrayList<User> reviews = new ArrayList<>();
-    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+    //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
-    // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
-    static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
+    static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
+    //static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();
     }
-    /*
-
-        Users user1 = new Users("João",123456);
-        (adicionar a classe onde os Users ficam registados quando tiver feito)
-        (adicionar o corpo quando estiver feito).addUsers(user1);
-        System.out.println((classe onde fica guardada).toString());
-    */
 
     private static void userInterface() throws IOException {
         System.out.println("------------------");
@@ -54,7 +48,7 @@ public class AppStore {
             Scanner in = new Scanner(System.in);
             int number = 0;
 
-            System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Exit: 5");
+            System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Registered Users:5 | Exit: 6");
 
             //Scan input
             if(in.hasNextInt()) {
@@ -114,7 +108,7 @@ public class AppStore {
                         if(userType == 1){
                             addNewClient(username,password);
                         }
-                        if(userType == 2){
+                        else if(userType == 2){
                             addNewProgrammer(username, password);
                         }
                         else{
@@ -138,7 +132,12 @@ public class AppStore {
                     break;
 
                 case 5:
-                    System.out.println("Saindo..");
+                    listUsers();
+                    break;
+
+                case 6:
+                    System.out.println("Saindo..\n");
+                    System.out.println("Imagine saying thanks for using our app \nThis program was made by the Depressed Gang \n(╥﹏╥)");
                     menu=false;
                     break;
 
@@ -153,11 +152,12 @@ public class AppStore {
    }
 
     public static void addNewProgrammer(String username, String password){
-         Programmer type = new Programmer(username, password);
+        Programmer type = new Programmer(username, password);
         users.add(type);
     }
+
     public static void addNewClient(String username, String password){
-        Client type = new Client(username, password);
+        Client type = new Client(username, password, 20);
         users.add(type);
     }
 
@@ -172,6 +172,23 @@ public class AppStore {
         }
 
         pw.close();
+    }
+
+    public static void listUsers(){
+        if (users.size() == 0){
+            System.out.println("No users registered yet!");
+            return;
+        }
+        for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getClass() == Programmer.class) {
+                System.out.println("Programador:");
+            }
+            else{
+                System.out.println("Cliente:");
+            }
+            System.out.println(users.get(i).toString());
+        }
+
     }
 
     //código para guardar o ficheiro dos comentarios
@@ -222,9 +239,9 @@ public class AppStore {
         catch (IOException e) {
             System.out.println("Erro ao abrir ficheiro:" + e );
         }
-
-
     }
 
-
+    public static ArrayList<App> getTotalApps() {
+        return totalApps;
+    }
 }
