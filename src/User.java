@@ -5,7 +5,6 @@ public abstract class User {
     protected String name, username, password;
     protected int age;
     protected int ID;
-    protected double money;
     protected String review;
 
     private int max,min;
@@ -17,10 +16,9 @@ public abstract class User {
     }
 
     //Constructor that gathers user information
-    public User(String name, int age, int money){
+    public User(String name, int age){
         this.name = name;
         this.age = age;
-        this.money=money;
     }
 
     //Constructor that takes username and password
@@ -94,8 +92,6 @@ public abstract class User {
 
     public void setReview(String review) {this.review= review;}
 
-
-
     public String saveInfo(){
         String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
         return info;
@@ -124,6 +120,7 @@ public abstract class User {
     }
 
 
+    public abstract void printApps(ArrayList<App> apps);
     public abstract void getMenu();
 
 //    public String toString(){

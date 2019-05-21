@@ -5,26 +5,20 @@ import java.io.*;
 public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<App> totalApps = new ArrayList<>();
     static String SaveList[] = new String[] {};
 
     //Array que guarda os comentarios
     static ArrayList<User> reviews = new ArrayList<>();
-    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+    //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
-    // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
-    static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
+    static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
+    //static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();
     }
-    /*
-
-        Users user1 = new Users("João",123456);
-        (adicionar a classe onde os Users ficam registados quando tiver feito)
-        (adicionar o corpo quando estiver feito).addUsers(user1);
-        System.out.println((classe onde fica guardada).toString());
-    */
 
     private static void userInterface() throws IOException {
         System.out.println("------------------");
@@ -153,11 +147,12 @@ public class AppStore {
    }
 
     public static void addNewProgrammer(String username, String password){
-         Programmer type = new Programmer(username, password);
+        Programmer type = new Programmer(username, password);
         users.add(type);
     }
+
     public static void addNewClient(String username, String password){
-        Client type = new Client(username, password);
+        Client type = new Client(username, password, 20);
         users.add(type);
     }
 
@@ -222,9 +217,9 @@ public class AppStore {
         catch (IOException e) {
             System.out.println("Erro ao abrir ficheiro:" + e );
         }
-
-
     }
 
-
+    public static ArrayList<App> getTotalApps() {
+        return totalApps;
+    }
 }

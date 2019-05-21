@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Programmer extends User {
-    ArrayList<App> apps;
+    private ArrayList<App> apps;
 
 //    public Programmer(String name, int age/*, int money*/){
 //        super(name, age,money);
@@ -43,7 +43,7 @@ public class Programmer extends User {
 
         switch(number){
             case 1:
-                printApps(apps);
+                printApps(getApps());
                 pressAnyKey();
                 break;
             case 2:
@@ -99,7 +99,10 @@ public class Programmer extends User {
 
         App createApp = new App(appName, price, name);
 
-        apps.add(createApp);
+        //colocar na lista do programador
+        getApps().add(createApp);
+        //Colocar na lista geral para as apps
+        AppStore.getTotalApps().add(createApp);
     }
 
     public void removeApp(){
@@ -110,14 +113,17 @@ public class Programmer extends User {
         System.out.println("Nome da aplicação que deseja remover: ");
         appName = input.nextLine();
 
-        if(apps.size() == 0){
+        if(getApps().size() == 0){
             System.out.println("You have no apps yet! \nCreate one :) \n");
         }
         else
-            for(int i=0; i < apps.size(); i++){
-                App currentApp = apps.get(i);
+            for(int i = 0; i < getApps().size(); i++){
+                App currentApp = getApps().get(i);
                     if(currentApp.getName().equals(appName)){
-                        apps.remove(i);
+                        //Remover da lista do programador
+                        getApps().remove(i);
+                        //Remover da lista geral
+                        AppStore.getTotalApps().remove(i);
                     }
             }
     }
@@ -139,5 +145,10 @@ public class Programmer extends User {
                 System.out.println("--------------------------");
             }
         }
+    }
+
+
+    public ArrayList<App> getApps() {
+        return apps;
     }
 }
