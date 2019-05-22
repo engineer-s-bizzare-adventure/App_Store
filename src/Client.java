@@ -69,16 +69,16 @@ public class Client extends User {
 
             case 3:
                 System.out.print("Escreva o seu comentario: ");
-                review = comment.nextLine();
+                App.review = comment.nextLine();
 
                 System.out.print("De 1 a 5 o quanto gosta da aplicação: ");
-                rating = rate.nextLine();
+                App.rating = rate.nextLine();
                 do {
                     System.out.print("introduza um valor entre 1 a 5 ");
                 }
-                    while (rating<1 || rating>5);
+                    while (App.rating<1 || App.rating>5);
 
-                AppRating.addNewReview(review);
+                AppRating.addNewReview(App.review);
                 System.out.println("O seu comentário e score foi guardado");
 
                 try {
