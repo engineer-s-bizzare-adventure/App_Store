@@ -72,7 +72,7 @@ public class Client extends User {
                 App.review = comment.nextLine();
 
                 System.out.print("De 1 a 5 o quanto gosta da aplicação: ");
-                App.rating = rate.nextLine();
+                App.rating = rate.nextInt();
                 do {
                     System.out.print("introduza um valor entre 1 a 5 ");
                 }
