@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 public class App {
     private String name;
     private String programmerName;
     private double price;
     protected String review;
+    protected  int rating;
+    protected double score;
 
     public App(String name, double price, String programmerName){
         this.name = name;
@@ -10,6 +14,9 @@ public class App {
         this.programmerName = programmerName;
     }
 
+    //Array que guarda os comentarios
+    static ArrayList<App> reviews = new ArrayList<>();
+    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     public String getName() {
         return name;
@@ -36,4 +43,13 @@ public class App {
         return review;
 
     }
+
+    public int getRating(){
+        return rating;
+    }
+
+    public void setRating(int rating){
+        this.rating = rating;
+    }
+
 }

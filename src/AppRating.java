@@ -1,13 +1,11 @@
 import java.io.*;
-import java.util.ArrayList;
+
 
 
 
 public class AppRating {
 
-    //Array que guarda os comentarios
-    static ArrayList<App> reviews = new ArrayList<>();
-    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+
 
 
 
@@ -39,8 +37,8 @@ public class AppRating {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
 
-        for (int i = 0; i < reviews.size(); i++) {
-            pw.println(reviews.get(i).reviewInfo());
+        for (int i = 0; i < App.reviews.size(); i++) {
+            pw.println(App.reviews.get(i).reviewInfo());
         }
 
         pw.close();
@@ -48,7 +46,7 @@ public class AppRating {
 
     public static void addNewReview(App review) {
 
-        reviews.add(review);
+        App.reviews.add(review);
     }
 
 

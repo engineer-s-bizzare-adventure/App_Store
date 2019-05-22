@@ -7,6 +7,7 @@ public class Client extends User {
 
     //scanner que faz o input das reviews
     Scanner comment = new Scanner(System.in);
+    Scanner rate = new Scanner(System.in);
 
     public Client(String name, int age, int money){
         super(name, age, money);
@@ -70,11 +71,18 @@ public class Client extends User {
                 System.out.print("Escreva o seu comentario: ");
                 review = comment.nextLine();
 
+                System.out.print("De 1 a 5 o quanto gosta da aplicação: ");
+                rating = rate.nextLine();
+                do {
+                    System.out.print("introduza um valor entre 1 a 5 ");
+                }
+                    while (rating<1 || rating>5);
+
                 AppRating.addNewReview(review);
-                System.out.println("O seu comentário foi guardado");
+                System.out.println("O seu comentário e score foi guardado");
 
                 try {
-                    AppRating.saveReview(AppRating.reviewPath);
+                    AppRating.saveReview(App.reviewPath);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
