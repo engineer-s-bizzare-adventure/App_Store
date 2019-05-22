@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class AppRating {
 
     //Array que guarda os comentarios
-    static ArrayList<User> reviews = new ArrayList<>();
+    static ArrayList<App> reviews = new ArrayList<>();
     static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
 
@@ -46,7 +46,7 @@ public class AppRating {
         pw.close();
     }
 
-    public static void addNewReview(ArrayList<User> review) {
+    public static void addNewReview(App review) {
 
         reviews.add(review);
     }

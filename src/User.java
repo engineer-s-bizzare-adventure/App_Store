@@ -6,7 +6,7 @@ public abstract class User {
     protected int age;
     protected int ID;
     protected double money;
-    protected String review;
+
 
 
     private int max,min;
@@ -91,9 +91,7 @@ public abstract class User {
         this.ID = ID;
     }
 
-    public String getReview() {return review;}
 
-    public void setReview(String review) {this.review = review;}
 
 
 
@@ -103,11 +101,7 @@ public abstract class User {
 
     }
 
-    public String reviewInfo(){
-        String review = getReview() + "\n";
-        return review;
 
-    }
 
 
     public boolean state(){

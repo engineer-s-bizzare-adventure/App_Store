@@ -70,7 +70,7 @@ public class Client extends User {
                 System.out.print("Escreva o seu comentario: ");
                 review = comment.nextLine();
 
-                AppRating.addNewReview(re);
+                AppRating.addNewReview(review);
                 System.out.println("O seu comentário foi guardado");
 
                 try {
