@@ -3,13 +3,12 @@ import java.util.Scanner;
 import java.io.*;
 
 public class AppStore {
-    //Static porque este pertence à classe, e não ao objeto
+    //Arraylist que guarga os utilizadores
+    // Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
     static String SaveList[] = new String[] {};
 
-    //Array que guarda os comentarios
-    static ArrayList<User> reviews = new ArrayList<>();
-    static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
     // static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
@@ -34,7 +33,7 @@ public class AppStore {
         System.out.println("Não tem conta? Registe-se!");
 
 
-        //Scanner for login
+        //Scanner para as opções de login e register
         Scanner login = new Scanner(System.in);
         Scanner register = new Scanner(System.in);
 
@@ -161,7 +160,7 @@ public class AppStore {
         users.add(type);
     }
 
-    //código para guardar o login dos users
+    //código para guardar um ficheiro com o login dos users
     public static void saveFile(String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -170,22 +169,13 @@ public class AppStore {
         for (int i = 0; i < users.size(); i++) {
             pw.println(users.get(i).saveInfo());
         }
-
         pw.close();
     }
 
-    //código para guardar o ficheiro dos comentarios
-    public static void saveReview(String reviewPath) throws IOException {
-        FileWriter fw = new FileWriter(reviewPath);
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter pw = new PrintWriter(bw);
 
-        for (int i = 0; i < reviews.size(); i++) {
-            pw.println(reviews.get(i).reviewInfo());
-        }
 
-        pw.close();
-    }
+
+
 
     public static void loadFile(String filePath) throws IOException{
         boolean loaded = false;

@@ -1,8 +1,12 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client extends User {
     ArrayList<App> ownedApps;
+
+    //scanner que faz o input das reviews
+    Scanner comment = new Scanner(System.in);
 
     public Client(String name, int age, int money){
         super(name, age, money);
@@ -63,8 +67,21 @@ public class Client extends User {
                 break;
 
             case 3:
-                System.out.println("Not done yet 3");
+                System.out.print("Escreva o seu comentario: ");
+                review = comment.nextLine();
+
+                AppRating.addNewReview(re);
+                System.out.println("O seu comentário foi guardado");
+
+                try {
+                    AppRating.saveReview(AppRating.reviewPath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 break;
+
+
 
             case 4:
                 System.out.println("Not done yet 4");
@@ -86,6 +103,7 @@ public class Client extends User {
         System.out.println("\n");
         System.out.println("------------------");
     }
+
 
 
 

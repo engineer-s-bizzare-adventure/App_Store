@@ -8,6 +8,7 @@ public abstract class User {
     protected double money;
     protected String review;
 
+
     private int max,min;
     protected int randomID;
     public boolean logged = false;
@@ -92,7 +93,7 @@ public abstract class User {
 
     public String getReview() {return review;}
 
-    public void setReview(String review) {this.review= review;}
+    public void setReview(String review) {this.review = review;}
 
 
 
