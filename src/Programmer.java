@@ -27,9 +27,10 @@ public class Programmer extends User {
         System.out.println("2. Adicionar uma nova aplicação");
         System.out.println("3. Remover uma aplicação");
         System.out.println("4. Ver reviews");
-        System.out.println("5. Logout");
-        System.out.println("6. Actualizar pefil");
-        System.out.println("7. Sair");
+        System.out.println("5. Vendas totais");
+        System.out.println("6. Logout");
+        System.out.println("7. Actualizar pefil");
+        System.out.println("8. Sair");
 
         //Logged in
         logged = true;
@@ -61,10 +62,14 @@ public class Programmer extends User {
                 break;
 
             case 5:
-                logged = false;
+                System.out.println("Not done yet");
                 break;
 
             case 6:
+                logged = false;
+                break;
+
+            case 7:
                 Scanner nome = new Scanner(System.in);
                 System.out.println("Insira o seu nome:");
                 name = nome.nextLine();
@@ -80,10 +85,9 @@ public class Programmer extends User {
                 setAge(age);
                 break;
 
-            case 7:
+            case 8:
                 System.exit(0);
                 break;
-
 
             default:
                 System.out.println("Opção Inválida! \nTente de novo:");
@@ -159,6 +163,7 @@ public class Programmer extends User {
                 System.out.println("--------------------------");
                 System.out.println("Nome: " + apps.get(i).getName());
                 System.out.println("Preco: " + apps.get(i).getPrice());
+                System.out.println("Vendas: " + apps.get(i).getCountSales());
                 System.out.println("--------------------------");
             }
         }
