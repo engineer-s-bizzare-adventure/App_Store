@@ -17,6 +17,9 @@ public class AppStore {
     private static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
+        addNewAdmin("Miguel", "123");
+        addNewAdmin("Adriano", "123");
+        addNewAdmin("Pedro", "123");
         userInterface();
     }
 
@@ -157,6 +160,11 @@ public class AppStore {
 
     private static void addNewProgrammer(String username, String password){
         Programmer type = new Programmer(username, password);
+        users.add(type);
+    }
+
+    public static void addNewAdmin(String username, String password){
+        Admin type = new Admin(username, password);
         users.add(type);
     }
 
