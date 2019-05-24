@@ -4,6 +4,7 @@ public class App {
     private String name;
     private String programmerName;
     private double price;
+    private int countSales;
     private static ArrayList<AppRating> userReviews;
 
 
@@ -32,6 +33,8 @@ public class App {
 
     public String getProgrammerName(){return programmerName;}
 
+    public int getCountSales(){return countSales;}
+
     public static ArrayList<AppRating> getUserReviews() {
         return userReviews;
     }
@@ -56,4 +59,7 @@ public class App {
         }
     }
 
+    public int appSale(){
+        return countSales++;
+    }
 }
