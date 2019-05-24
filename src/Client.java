@@ -163,10 +163,10 @@ public class Client extends User {
                 reviewApps(ownedApps, App.getUserReviews());
                 break;
             case 5:
-                System.out.println(money);
+                System.out.println("Not done yet");
                 break;
             case 6:
-                logged = false;
+                System.out.println(money);
                 break;
             case 7:
                 addMoney();
