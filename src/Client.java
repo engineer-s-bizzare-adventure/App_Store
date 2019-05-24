@@ -78,7 +78,7 @@ public class Client extends User {
                 }
                     while (App.rating<1 || App.rating>5);
 
-                AppRating.addNewReview(App.review);
+                AppRating.addNewReview(App.reviews);
                 System.out.println("O seu comentário e score foi guardado");
 
                 try {

@@ -4,8 +4,8 @@ public class App {
     private String name;
     private String programmerName;
     private double price;
-    protected String review;
-    protected  int rating;
+    protected static String review;
+    protected static int rating;
     protected double score;
 
     public App(String name, double price, String programmerName){

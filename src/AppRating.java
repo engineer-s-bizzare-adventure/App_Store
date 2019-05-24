@@ -53,6 +53,7 @@ public class AppRating {
     public  void deleteReview(int index){
         if ( index >=0 && index < App.reviews.size() ){
             App.reviews.remove(index);
+            System.out.println("o seu comentario foi removido: ");
         }
         else {
             System.out.println("não foi possivel encontrar este comentario: ");
