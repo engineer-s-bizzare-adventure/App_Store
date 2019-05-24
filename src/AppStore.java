@@ -13,8 +13,8 @@ public class AppStore {
     //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
-    static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
-    //static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
+    //static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
+    static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();

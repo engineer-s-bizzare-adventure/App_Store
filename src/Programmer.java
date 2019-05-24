@@ -161,7 +161,17 @@ public class Programmer extends User {
                 System.out.println("Preco: " + apps.get(i).getPrice());
                 System.out.println("--------------------------");
             }
+            TotalAppsEarning();
         }
+    }
+
+    private void TotalAppsEarning(){
+        double total=0;
+
+        for(int i = 0; i < apps.size(); i++ ){
+            total += apps.get(i).getPrice() ;
+        }
+        System.out.println("Obteve um valor de : " + total+"€ pelas suas aplicações");
     }
 
     public void viewReviews(){
