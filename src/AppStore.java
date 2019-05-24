@@ -157,7 +157,7 @@ public class AppStore {
     }
 
     public static void addNewClient(String username, String password){
-        Client type = new Client(username, password, 20);
+        Client type = new Client(username, password, 20 );
         users.add(type);
     }
 

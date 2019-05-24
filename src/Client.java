@@ -39,6 +39,8 @@ public class Client extends User {
                 money-= selectedApp.getPrice();
                 //Adiciona a app à lista
                 ownedApps.add(selectedApp);
+
+                selectedApp.appSale();
             }
         }
     }
