@@ -10,26 +10,20 @@ public abstract class User {
 
     private int max,min;
     protected int randomID;
-    public boolean logged = false;
+    protected boolean logged = false;
 
-    public User(){
 
-    }
 
-    //Constructor that gathers user information
-    public User(String name, int age){
-        this.name = name;
-        this.age = age;
-    }
+
 
     //Constructor that takes username and password
-    public User(String username, String password){
+    protected User(String username, String password){
         this.username = username;
         this.password = password;
         this.ID = createRandomID();
     }
 
-    public int createRandomID(){
+    protected int createRandomID(){
         max = 999999;
         min = 100000;
         Random randomNumber = new Random();
@@ -50,47 +44,47 @@ public abstract class User {
 
     //Gets & Sets
 
-    public String getUsername(){
+    protected String getUsername(){
         return username;
     }
 
-    public void setUsername(String username){
+    protected void setUsername(String username){
         this.username = username;
     }
 
-    public String getPassword(){
+    protected String getPassword(){
         return password;
     }
 
-    public void setPassword(String password){
+    protected void setPassword(String password){
         this.password = password;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
+    protected int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    protected void setAge(int age) {
         this.age = age;
     }
 
-    public int getID() {
+    protected int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    protected void setID(int ID) {
         this.ID = ID;
     }
 
-    public String getReview() {return review;}
+    protected String getReview() {return review;}
 
     public void setReview(String review) {this.review= review;}
 
@@ -101,24 +95,24 @@ public abstract class User {
     protected boolean isSubscribed(){
         return subscribed;
     }
-    public String saveInfo(){
+    protected String saveInfo(){
         String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
         return info;
 
     }
 
-    public String reviewInfo(){
+    protected String reviewInfo(){
         String review = getReview() + "\n";
         return review;
 
     }
 
 
-    public boolean state(){
+    protected boolean state(){
         return logged;
     }
 
-    public void pressAnyKey(){
+    protected void pressAnyKey(){
         System.out.println("Pressione uma tecla para continuar...");
         try
         {
@@ -129,8 +123,8 @@ public abstract class User {
     }
 
 
-    public abstract void printApps(ArrayList<App> apps);
-    public abstract void getMenu();
+    protected abstract void printApps(ArrayList<App> apps);
+    protected abstract void getMenu();
 
     public String toString(){
         String output="";

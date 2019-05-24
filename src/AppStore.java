@@ -9,12 +9,12 @@ public class AppStore {
     static String SaveList[] = new String[] {};
 
     //Array que guarda os comentarios
-    static ArrayList<User> reviews = new ArrayList<>();
+    private static ArrayList<User> reviews = new ArrayList<>();
     //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
     //static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
-    static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
+    private static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         userInterface();
@@ -155,18 +155,18 @@ public class AppStore {
         System.out.println("------------------");
    }
 
-    public static void addNewProgrammer(String username, String password){
+    private static void addNewProgrammer(String username, String password){
         Programmer type = new Programmer(username, password);
         users.add(type);
     }
 
-    public static void addNewClient(String username, String password){
+    private static void addNewClient(String username, String password){
         Client type = new Client(username, password, 20 );
         users.add(type);
     }
 
     //código para guardar o login dos users
-    public static void saveFile(String filePath) throws IOException {
+    private static void saveFile(String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
@@ -178,7 +178,7 @@ public class AppStore {
         pw.close();
     }
 
-    public static void listUsers(){
+    private static void listUsers(){
         if (users.size() == 0){
             System.out.println("No users registered yet!");
             return;
@@ -196,7 +196,7 @@ public class AppStore {
     }
 
     //Codigo para verificar utilizadores existentes
-    public static boolean checkExistingUsers(String username, String password){
+    private static boolean checkExistingUsers(String username, String password){
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername().equals(username)) {
                 return false;
@@ -218,7 +218,7 @@ public class AppStore {
         pw.close();
     }
 
-    public static void loadFile(String filePath) throws IOException{
+    private static void loadFile(String filePath) throws IOException{
         boolean loaded = false;
         int counter = 0;
         ArrayList<String> Info = new ArrayList<>();
@@ -255,7 +255,7 @@ public class AppStore {
         }
     }
 
-    public static ArrayList<App> getTotalApps() {
+    static ArrayList<App> getTotalApps() {
         return totalApps;
     }
 }

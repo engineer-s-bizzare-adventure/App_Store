@@ -9,7 +9,7 @@ public class Programmer extends User {
 //        super(name, age,money);
 //    }
 
-    public Programmer(String username, String password){
+    protected Programmer(String username, String password){
         super(username, password);
         apps = new ArrayList<>();
     }
@@ -97,11 +97,11 @@ public class Programmer extends User {
         System.out.println("------------------");
     }
 
-    public void logOut(){
+    protected void logOut(){
         logged = false;
     }
 
-    public void addApp(){
+    private void addApp(){
         Scanner appInfo = new Scanner(System.in);
 
         String appName;
@@ -126,7 +126,7 @@ public class Programmer extends User {
         AppStore.getTotalApps().add(createApp);
     }
 
-    public void removeApp(){
+    private void removeApp(){
         Scanner input = new Scanner(System.in);
 
         String appName;
@@ -149,7 +149,7 @@ public class Programmer extends User {
             }
     }
 
-    public void printApps(ArrayList<App> apps){
+    protected void printApps(ArrayList<App> apps){
         if(apps.size() == 0){
             System.out.println("You have no apps yet! \nCreate one :) \n");
         }
@@ -170,6 +170,7 @@ public class Programmer extends User {
         }
     }
 
+    //valor total recebido para cada programador
     private void TotalAppsEarning(){
         double total=0;
 
@@ -179,7 +180,8 @@ public class Programmer extends User {
         System.out.println("Obteve um valor de : " + total+"€ pelas suas aplicações");
     }
 
-    public void viewReviews(){
+    //mostra os comentários feitos pelos clientes
+    private void viewReviews(){
         Scanner input = new Scanner(System.in);
 
         String appName;
@@ -201,7 +203,7 @@ public class Programmer extends User {
     }
 
 
-    public ArrayList<App> getApps() {
+    private ArrayList<App> getApps() {
         return apps;
     }
 }

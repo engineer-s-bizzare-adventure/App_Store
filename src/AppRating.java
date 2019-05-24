@@ -4,40 +4,36 @@ public class AppRating {
     private String comment;
     private String personName;
 
-    public AppRating(){
-        setRating(0);
-        setComment("");
-        setPersonName("");
-    }
 
-    public AppRating(int rating, String comment, String personName){
+
+    protected AppRating(int rating, String comment, String personName){
         this.setRating(rating);
         this.setComment(comment);
         this.setPersonName(personName);
     }
 
 
-    public int getRating() {
+    protected int getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    protected void setRating(int rating) {
         this.rating = rating;
     }
 
-    public String getComment() {
+    protected String getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    protected void setComment(String comment) {
         this.comment = comment;
     }
 
-    public String getPersonName() {
+    protected String getPersonName() {
         return personName;
     }
 
-    public void setPersonName(String personName) {
+    protected void setPersonName(String personName) {
         this.personName = personName;
     }
 }

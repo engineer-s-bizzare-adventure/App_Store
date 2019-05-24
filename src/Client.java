@@ -3,16 +3,16 @@ import java.util.Scanner;
 
 public class Client extends User {
     private double money;
-    ArrayList<App> ownedApps;
+    private ArrayList<App> ownedApps;
 
 
-    public Client(String username, String password, double money){
+    protected Client(String username, String password, double money){
         super(username, password);
         this.money = money;
         ownedApps = new ArrayList<>();
     }
 
-    public double addMoney(){
+    private double addMoney(){
             System.out.println("Insira o valor que deseja adicionar à sua conta: ");
 
             Scanner in = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Client extends User {
             return money;
     }
 
-    public void buyApp(ArrayList<App> app){
+    protected void buyApp(ArrayList<App> app){
         Scanner input = new Scanner(System.in);
 
         String appName;
@@ -45,7 +45,7 @@ public class Client extends User {
         }
     }
 
-    public void printApps(ArrayList<App> apps){
+    protected void printApps(ArrayList<App> apps){
         if(apps.size() == 0){
             System.out.println("You have no apps yet! \nBuy one :) \n");
         }
@@ -64,7 +64,7 @@ public class Client extends User {
         }
     }
 
-    public void printTotalApps(ArrayList<App> apps){
+    private void printTotalApps(ArrayList<App> apps){
         if(apps.size() == 0){
             System.out.println("Não existem aplicações de momento!");
         }
@@ -84,7 +84,7 @@ public class Client extends User {
         }
     }
 
-    public void reviewApps(ArrayList<App> apps, ArrayList<AppRating> reviews){
+    private void reviewApps(ArrayList<App> apps, ArrayList<AppRating> reviews){
         Scanner input = new Scanner(System.in);
 
         String appName;
@@ -118,7 +118,7 @@ public class Client extends User {
         }
     }
 
-    protected void subscribeUser(){
+    private void subscribeUser(){
         if(money>=5){
             money-=5;
             System.out.println("Subscreveu!");

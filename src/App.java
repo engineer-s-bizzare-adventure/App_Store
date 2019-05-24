@@ -8,14 +8,14 @@ public class App {
     private static ArrayList<AppRating> userReviews;
 
 
-    public App(String name, double price, String programmerName){
+    protected App(String name, double price, String programmerName){
         this.name = name;
         this.price = price;
         this.programmerName = programmerName;
         userReviews = new ArrayList<>();
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
@@ -23,7 +23,7 @@ public class App {
         this.name = name;
     }
 
-    public double getPrice() {
+    protected double getPrice() {
         return price;
     }
 
@@ -31,15 +31,15 @@ public class App {
         this.price = price;
     }
 
-    public String getProgrammerName(){return programmerName;}
+    protected String getProgrammerName(){return programmerName;}
 
-    public int getCountSales(){return countSales;}
+    protected int getCountSales(){return countSales;}
 
-    public static ArrayList<AppRating> getUserReviews() {
+    protected static ArrayList<AppRating> getUserReviews() {
         return userReviews;
     }
 
-    public void printReviews(ArrayList<AppRating> reviews){
+    protected void printReviews(ArrayList<AppRating> reviews){
         if(reviews.size() == 0){
             System.out.println("You have no apps yet! \nCreate one :) \n");
         }
@@ -59,7 +59,7 @@ public class App {
         }
     }
 
-    public int appSale(){
+    protected int appSale(){
         return countSales++;
     }
 }
