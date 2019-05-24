@@ -86,6 +86,40 @@ public class Client extends User {
         }
     }
 
+    public void reviewApps(ArrayList<App> apps, ArrayList<AppRating> reviews){
+        Scanner input = new Scanner(System.in);
+
+        String appName;
+        int rating;
+        String comment;
+
+        System.out.println("Introduza o nome da app que deseja avaliar: ");
+        appName = input.nextLine();
+
+        //Percorrer o arraylist
+        for(int i = 0; i < apps.size(); i++){
+            //App para comparar com o que o utilizador insere
+            App currentApp = apps.get(i);
+            //Se estes tiverem o mesmo nome(...)
+            if(currentApp.getName().equals(appName)){
+                Scanner secondInput = new Scanner(System.in);
+
+                System.out.println("Avaliação 1-5: ");
+                rating = input.nextInt();
+
+                System.out.println("Comentário: ");
+                comment = secondInput.nextLine();
+
+                //Criação do objeto AppRating
+                AppRating createReview = new AppRating(rating, comment, this.name);
+                //Adicionar ao ArrayList de reviews dentro da classe app
+                reviews.add(createReview);
+            }
+            else
+                System.out.println("Erro!");
+        }
+    }
+
     public void getMenu(){
         if(!logged){
             System.out.println("------------------");
@@ -127,7 +161,7 @@ public class Client extends User {
                 buyApp(AppStore.getTotalApps());
                 break;
             case 4:
-                System.out.println("Not done yet 4");
+                reviewApps(ownedApps, App.getUserReviews());
                 break;
             case 5:
                 System.out.println("Not done yet 5");

@@ -1,31 +1,43 @@
-import java.io.File;
-import java.io.IOException;
-
 
 public class AppRating {
+    private int rating;
+    private String comment;
+    private String personName;
 
+    public AppRating(){
+        setRating(0);
+        setComment("");
+        setPersonName("");
+    }
 
-
-    //System.out.println("A sua review:" + apps.get.geReview() ) ;
-
-    public void CreateReview() {
-        try{
-            File myObj = new File("review.txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch(IOException e)
-
-        {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-
+    public AppRating(int rating, String comment, String personName){
+        this.setRating(rating);
+        this.setComment(comment);
+        this.setPersonName(personName);
     }
 
 
+    public int getRating() {
+        return rating;
+    }
 
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
 }
