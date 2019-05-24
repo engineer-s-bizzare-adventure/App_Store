@@ -62,7 +62,7 @@ public class Programmer extends User {
                 break;
 
             case 5:
-                System.out.println("Not done yet");
+                totalEarnings(apps);
                 break;
 
             case 6:
@@ -150,16 +150,20 @@ public class Programmer extends User {
     }
 
     public void printApps(ArrayList<App> apps){
+        //Se a lista de aplicações estiver vazia..
         if(apps.size() == 0){
             System.out.println("You have no apps yet! \nCreate one :) \n");
         }
         else{
+            //percorrer o array de apps
             for(int i = 0; i < apps.size(); i++){
                 if(i == 0){
+                    //Para este "banner" aparecer logo
                     System.out.println("--------------------------");
                     System.out.println("|  As minhas aplicações  |");
                     System.out.println("--------------------------");
                 }
+                //Print das informações
                 System.out.println("--------------------------");
                 System.out.println("Nome: " + apps.get(i).getName());
                 System.out.println("Preco: " + apps.get(i).getPrice());
@@ -174,20 +178,42 @@ public class Programmer extends User {
 
         String appName;
 
+        //Para comparar com o outro nome que iremos tirar como referencia
         System.out.println("Nome da aplicação que deseja verificar os reviews: ");
         appName = input.nextLine();
 
+        //Se a lista de aplicações estiver vazia..
         if(getApps().size() == 0){
             System.out.println("You have no apps yet! \nCreate one :) \n");
         }
         else
             for(int i = 0; i < getApps().size(); i++){
+                //Aplicação para comparação
                 App currentApp = getApps().get(i);
+                //Se estes tiverem o mesmo nome
                 if(currentApp.getName().equals(appName)){
+                    //print das avaliações
                     currentApp.printReviews(App.getUserReviews());
                 }
             }
 
+    }
+
+    public void totalEarnings(ArrayList<App> apps){
+        //variável para guardar a quantidade de vendas
+        int sumSales = 0;
+        //variável para guardar o total ganho pelas vendas
+        double totalEarned = 0;
+
+        //percorrer a lista de apps
+        for(int i = 0; i < apps.size(); i++){
+            //Cálculo da quantidade de vendas e o valot total
+            sumSales += apps.get(i).getCountSales();
+            totalEarned += ((apps.get(i).getCountSales()) * apps.get(i).getPrice());
+        }
+        //Print dos valores
+        System.out.println("Quantidade de vendas: " + sumSales);
+        System.out.println("Quantidade ganho: " + totalEarned);
     }
 
 

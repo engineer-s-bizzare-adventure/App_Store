@@ -6,7 +6,6 @@ public class AppStore {
     //Static porque este pertence à classe, e não ao objeto
     static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<App> totalApps = new ArrayList<>();
-    static String SaveList[] = new String[] {};
 
     //Array que guarda os comentarios
     static ArrayList<User> reviews = new ArrayList<>();
@@ -17,6 +16,9 @@ public class AppStore {
     //static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
+        addNewAdmin("Miguel", "123");
+        addNewAdmin("Adriano", "123");
+        addNewAdmin("Pedro", "123");
         userInterface();
     }
 
@@ -157,6 +159,11 @@ public class AppStore {
 
     public static void addNewProgrammer(String username, String password){
         Programmer type = new Programmer(username, password);
+        users.add(type);
+    }
+
+    public static void addNewAdmin(String username, String password){
+        Admin type = new Admin(username, password);
         users.add(type);
     }
 

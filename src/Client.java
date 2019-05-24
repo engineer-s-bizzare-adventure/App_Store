@@ -5,6 +5,8 @@ public class Client extends User {
     private double money;
     ArrayList<App> ownedApps;
 
+    public Client(){
+    }
 
     public Client(String username, String password, double money){
         super(username, password);
