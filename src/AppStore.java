@@ -16,10 +16,16 @@ public class AppStore {
     }
     //Array que guarda os comentarios
     //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
+    //static final String reviewPath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\review.txt";
+    
+    static final String reviewPath = "review.txt";
+
+    static final String filePath = "save.txt";
+
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
     //static final String filePath = "C:\\Users\\luisa\\Desktop\\app_store\\src\\save.txt";
-    private static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
+    //private static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
         addNewAdmin("Miguel", "123");
@@ -136,11 +142,13 @@ public class AppStore {
                 case 3:
                     System.out.println("Save:");
                     saveFile(filePath);
+                    saveReview(reviewPath);
                     break;
 
                 case 4:
                     System.out.println("Load:");
                     loadFile(filePath);
+
                     break;
 
                 case 5:

@@ -202,7 +202,7 @@ public class Client extends User {
                 name = nome.nextLine();
                 Scanner idade = new Scanner(System.in);
                 System.out.println("Insira a sua idade:");
-                if(in.hasNextInt()) {
+                if(idade.hasNextInt()) {
                     age = idade.nextInt();
                 }
                 else{
