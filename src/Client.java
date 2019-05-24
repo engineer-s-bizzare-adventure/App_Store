@@ -116,13 +116,28 @@ public class Client extends User {
         }
     }
 
+    protected void subscribeUser(){
+        if(money>=5){
+            money-=5;
+            System.out.println("Subscreveu!");
+            setSubscribed(true);
+        }
+        else{
+            System.out.println("Não tem dinheiro suficiente para subscrever");
+        }
+    }
+
     public void getMenu(){
+        //Apresenta bem vindo na primera vez que entra
         if(!logged){
             System.out.println("------------------");
             System.out.println("|   Bem vindo!   |");
             System.out.println("------------------");
         }
+
         System.out.println("User: " + this.username + " | ID: " + this.ID);
+
+        //Verificar se o têm nome ou idade
         if(this.name != null && this.age != 0){
             System.out.println("Name: " + this.name + " | Age: " + this.age);
         }
@@ -135,8 +150,9 @@ public class Client extends User {
         System.out.println("6. Ver fundos");
         System.out.println("7. Adicionar fundos");
         System.out.println("8. Actualizar pefil");
-        System.out.println("9. Logout");
-        System.out.println("10. Sair");
+        System.out.println("9. Subscrever");
+        System.out.println("10. Logout");
+        System.out.println("11. Sair");
 
         //Logged in
         logged = true;
@@ -163,10 +179,10 @@ public class Client extends User {
                 reviewApps(ownedApps, App.getUserReviews());
                 break;
             case 5:
-                System.out.println(money);
+                System.out.println("Not done yet");
                 break;
             case 6:
-                logged = false;
+                System.out.println(money);
                 break;
             case 7:
                 addMoney();
@@ -186,10 +202,28 @@ public class Client extends User {
                 setName(name);
                 setAge(age);
                 break;
+
             case 9:
+                System.out.println("Deseja subscrever?\nTerá um custo de 5 euros para uma subscrição mensal");
+                System.out.println("Sim(s) Não(n)");
+                Scanner sub = new Scanner(System.in);
+                String answer = sub.nextLine();
+                if(answer.equals("s") || answer.equals("S")){
+                    subscribeUser();
+                    break;
+                }
+                else if(answer.equals("n") || answer.equals("N")){
+                    System.out.println("Não subscreveu!");
+                    break;
+                }
+                else{
+                    System.out.println("Opção inválida!");
+                    break;
+                }
+            case 10:
                 logged = false;
                 break;
-            case 10:
+            case 11:
                 System.exit(0);
                 break;
             default:

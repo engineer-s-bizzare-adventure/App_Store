@@ -97,6 +97,10 @@ public class AppStore {
                     System.out.println("Insira uma password: ");
                     password = register.nextLine();
 
+                    if(!checkExistingUsers(username,password)){
+                        System.out.println("User already exists! ");
+                        break;
+                    }
                     Scanner type = new Scanner(System.in);
                     System.out.println("Pressiona 1 para se registar como cliente ou 2 para programador");
 
@@ -189,6 +193,16 @@ public class AppStore {
             System.out.println(users.get(i).toString());
         }
 
+    }
+
+    //Codigo para verificar utilizadores existentes
+    public static boolean checkExistingUsers(String username, String password){
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //código para guardar o ficheiro dos comentarios

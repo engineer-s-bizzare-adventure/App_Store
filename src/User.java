@@ -6,6 +6,7 @@ public abstract class User {
     protected int age;
     protected int ID;
     protected String review;
+    protected boolean subscribed;
 
     private int max,min;
     protected int randomID;
@@ -45,6 +46,7 @@ public abstract class User {
         System.out.println("Unique ID for user created: " + randomID);
         return randomID;
     }
+
 
     //Gets & Sets
 
@@ -92,6 +94,13 @@ public abstract class User {
 
     public void setReview(String review) {this.review= review;}
 
+    protected void setSubscribed(boolean state){
+        this.subscribed = state;
+    }
+
+    protected boolean isSubscribed(){
+        return subscribed;
+    }
     public String saveInfo(){
         String info = getUsername() + "\n" + getPassword() + "\n" + getID() + "\n" + getName() + "\n" + getAge() + "\n";
         return info;
