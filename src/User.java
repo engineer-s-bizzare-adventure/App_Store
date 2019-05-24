@@ -10,9 +10,11 @@ public abstract class User {
 
     private int max,min;
     protected int randomID;
-    protected boolean logged = false;
+    protected boolean logged;
 
-
+    User(){
+        logged = false;
+    }
 
 
 

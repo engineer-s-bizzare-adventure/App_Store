@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
 
@@ -7,9 +8,13 @@ public class AppStore {
     static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<App> totalApps = new ArrayList<>();
     static String SaveList[] = new String[] {};
-
-    //Array que guarda os comentarios
+    private static int dias;
     private static ArrayList<User> reviews = new ArrayList<>();
+
+    AppStore(){
+        dias=0;
+    }
+    //Array que guarda os comentarios
     //static final String reviewPath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\reviews.txt";
 
     //static final String filePath = "D:\\Allonan\\Universidade\\POO\\Project\\src\\save.txt";
@@ -17,6 +22,9 @@ public class AppStore {
     private static final String filePath = "C:\\Users\\pedro\\Desktop\\app_store\\src\\save.txt";
 
     public static void main(String[] args) throws IOException {
+        addNewAdmin("Miguel", "123");
+        addNewAdmin("Adriano", "123");
+        addNewAdmin("Pedro", "123");
         userInterface();
     }
 
@@ -48,7 +56,7 @@ public class AppStore {
             Scanner in = new Scanner(System.in);
             int number = 0;
 
-            System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Registered Users:5 | Exit: 6");
+            System.out.println("Login: 1 | Sign up: 2 | Save: 3 | Load:4 | Registered Users:5 | Exit: 6 | Increase Day: 7");
 
             //Scan input
             if(in.hasNextInt()) {
@@ -145,6 +153,11 @@ public class AppStore {
                     menu=false;
                     break;
 
+                case 7:
+                    increaseDay();
+                    System.out.println("Another day has passed.. \nDay: " + dias);
+                    break;
+
                 default:
                     System.out.println("Input not available \nTry again:");
                     in.next();
@@ -157,6 +170,11 @@ public class AppStore {
 
     private static void addNewProgrammer(String username, String password){
         Programmer type = new Programmer(username, password);
+        users.add(type);
+    }
+
+    public static void addNewAdmin(String username, String password){
+        Admin type = new Admin(username, password);
         users.add(type);
     }
 
@@ -176,6 +194,22 @@ public class AppStore {
         }
 
         pw.close();
+    }
+
+    private static void increaseDay(){
+        dias++;
+        int randomCash;
+        Random randomNumber = new Random();
+        randomCash = randomNumber.nextInt(100);
+
+        //add random ammount of cash to clients
+        for (int i = 0; i < AppStore.users.size() ; i++) {
+            if (users.get(i).getClass()==Client.class){
+                ((Client) users.get(i)).randomMoney(randomCash);
+
+            }
+        }
+
     }
 
     private static void listUsers(){

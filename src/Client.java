@@ -5,6 +5,9 @@ public class Client extends User {
     private double money;
     private ArrayList<App> ownedApps;
 
+    public Client(){
+
+    }
 
     protected Client(String username, String password, double money){
         super(username, password);
@@ -22,6 +25,10 @@ public class Client extends User {
                 money += value;
             }
             return money;
+    }
+
+    public void randomMoney(int addMoney){
+        this.money+=addMoney;
     }
 
     protected void buyApp(ArrayList<App> app){
