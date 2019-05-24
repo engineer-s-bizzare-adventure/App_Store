@@ -28,8 +28,8 @@ public class Programmer extends User {
         System.out.println("3. Remover uma aplicação");
         System.out.println("4. Ver reviews");
         System.out.println("5. Logout");
-        System.out.println("8. Actualizar pefil");
-        System.out.println("6. Sair");
+        System.out.println("6. Actualizar pefil");
+        System.out.println("7. Sair");
 
         //Logged in
         logged = true;
@@ -57,7 +57,7 @@ public class Programmer extends User {
                 break;
 
             case 4:
-                System.out.println("Not done yet 4");
+                viewReviews();
                 break;
 
             case 5:
@@ -162,6 +162,27 @@ public class Programmer extends User {
                 System.out.println("--------------------------");
             }
         }
+    }
+
+    public void viewReviews(){
+        Scanner input = new Scanner(System.in);
+
+        String appName;
+
+        System.out.println("Nome da aplicação que deseja verificar os reviews: ");
+        appName = input.nextLine();
+
+        if(getApps().size() == 0){
+            System.out.println("You have no apps yet! \nCreate one :) \n");
+        }
+        else
+            for(int i = 0; i < getApps().size(); i++){
+                App currentApp = getApps().get(i);
+                if(currentApp.getName().equals(appName)){
+                    currentApp.printReviews(App.getUserReviews());
+                }
+            }
+
     }
 
 
